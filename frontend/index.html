@@ -1,80 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>GitHub Issue Assistant – Ollama Edition</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <main class="page">
-      <header class="page-header">
-        <h1>GitHub Issue Assistant</h1>
-        <p class="tagline">
-          Paste a GitHub repo URL and issue number, and let your local Ollama model help you triage.
-        </p>
-      </header>
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub Issue Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
 
-      <section class="card">
-        <form id="issue-form">
-          <div class="form-row">
-            <label for="repo-url">Repository URL</label>
-            <input
-              id="repo-url"
-              type="url"
-              placeholder="https://github.com/facebook/react"
-              required
-            />
-          </div>
+<body>
+  <main class="page">
+    
+    <header class="page-header">
+      <h1>GitHub Issue Assistant</h1>
+      <p class="tagline">Analyze public GitHub issues using your locally-running LLM.</p>
+    </header>
 
-          <div class="form-row">
-            <label for="issue-number">Issue Number</label>
-            <input
-              id="issue-number"
-              type="number"
-              min="1"
-              placeholder="e.g. 123"
-              required
-            />
-          </div>
-
-          <div class="form-row actions">
-            <button type="submit" id="analyze-btn">Analyze Issue</button>
-            <button type="button" id="sample-btn" class="secondary">
-              Use Sample
-            </button>
-          </div>
-
-          <p class="small-hint">
-            Tip: make sure <code>ollama serve</code> is running and you have pulled the model set in
-            <code>OLLAMA_MODEL</code> (default: <code>llama3</code>).
-          </p>
-        </form>
-      </section>
-
-      <section id="results-section" class="card card-results hidden">
-        <div class="results-header">
-          <h2>Analysis</h2>
-          <button id="copy-json-btn" class="secondary small">
-            Copy JSON
-          </button>
+    <section class="card">
+      <form id="issue-form">
+        <div class="form-row">
+          <label for="repo-url">Repository URL</label>
+          <input
+            id="repo-url"
+            type="url"
+            placeholder="https://github.com/facebook/react"
+            required
+          >
         </div>
 
-        <div id="results-content"></div>
-
-        <div class="raw-json">
-          <h3>Raw JSON</h3>
-          <pre id="raw-json-block"></pre>
+        <div class="form-row">
+          <label for="issue-number">Issue Number</label>
+          <input
+            id="issue-number"
+            type="number"
+            min="1"
+            placeholder="e.g. 123"
+            required
+          >
         </div>
-      </section>
 
-      <section class="card card-footer-note">
-        <p class="footnote">
-          Backend talks to Ollama running locally. The code is small enough that you can actually read it.
+        <div class="form-row actions">
+          <button type="submit" id="analyze-btn">Analyze Issue</button>
+          <button type="button" id="sample-btn" class="secondary">Sample Issue</button>
+        </div>
+
+        <p class="hint">
+         
         </p>
-      </section>
-    </main>
+      </form>
+    </section>
 
-    <script src="script.js"></script>
-  </body>
+    <section id="results-section" class="card results hidden">
+      <div class="results-header">
+        <h2>Analysis Results</h2>
+        <button id="copy-json-btn" class="secondary small">Copy JSON</button>
+      </div>
+
+      <div id="results-content"></div>
+
+      <div class="raw-json">
+        <h3>Raw Response JSON</h3>
+        <pre id="raw-json-block"></pre>
+      </div>
+    </section>
+
+    <footer class="card-footer">
+      <p class="footnote">
+       
+      </p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
 </html>
